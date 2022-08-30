@@ -1,2 +1,2 @@
 # Car-Dealership-DataBase
-A program to store cars database.
+A program that manages a car dealership database.
