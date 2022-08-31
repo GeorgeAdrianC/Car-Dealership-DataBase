@@ -56,7 +56,7 @@ def view_command():
 def search_command():
     list_box.delete(0, END)
     for row in dealership_backend.search(
-        make_value.get(),model_value.get(),year_value.get(),km_value.get(),
+        make_value.get().upper(),model_value.get(),year_value.get(),km_value.get(),
         fuel_value.get(),vin_value.get(),color_value.get(),price_value.get()
         ):
         list_box.insert(END,row)
@@ -64,13 +64,13 @@ def search_command():
 # connects insert function to the button
 def insert_command():
     dealership_backend.insert(
-        make_value.get(),model_value.get(),year_value.get(),km_value.get(),
-        fuel_value.get(),vin_value.get(),color_value.get(),price_value.get()
+        make_value.get().upper(),model_value.get().upper(),year_value.get(),km_value.get(),
+        fuel_value.get().upper(),vin_value.get().upper(),color_value.get().upper(),price_value.get()
         )
     list_box.delete(0, END)
     list_box.insert(END,
-        (make_value.get(),model_value.get(),year_value.get(),km_value.get(),
-        fuel_value.get(),vin_value.get(),color_value.get(),price_value.get()
+        (make_value.get().upper(),model_value.get().upper(),year_value.get(),km_value.get(),
+        fuel_value.get().upper(),vin_value.get().upper(),color_value.get().upper(),price_value.get()
         ))
 
 # connects delete function to the button
@@ -81,8 +81,8 @@ def delete_command():
 def update_command():
     #updates the selected widget
     dealership_backend.update( 
-        selected_tuple[0],make_value.get(),model_value.get(),year_value.get(),km_value.get(),
-        fuel_value.get(),vin_value.get(),color_value.get(),price_value.get()
+        selected_tuple[0],make_value.get().upper(),model_value.get().upper(),year_value.get(),km_value.get(),
+        fuel_value.get().upper(),vin_value.get().upper(),color_value.get().upper(),price_value.get()
         ) 
 
 # connects the clear function to the button
