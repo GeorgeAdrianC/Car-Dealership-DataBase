@@ -1,6 +1,8 @@
 from tkinter import *
 from turtle import width
-import dealership_backend
+from dealership_backend import Database
+
+database=Database("dealership.db")
 
 
 """
@@ -49,13 +51,13 @@ def get_selected_row(event):
 # connects view function to the button
 def view_command():
     list_box.delete(0, END) # -> we make sure that when the db is executed the list box is empty
-    for row in dealership_backend.view():
+    for row in database.view():
         list_box.insert(END,row) # -> the new rows will be put at the end of the list
     
 # connects search function to the button
 def search_command():
     list_box.delete(0, END)
-    for row in dealership_backend.search(
+    for row in database.search(
         make_value.get().upper(),model_value.get(),year_value.get(),km_value.get(),
         fuel_value.get(),vin_value.get(),color_value.get(),price_value.get()
         ):
@@ -63,7 +65,7 @@ def search_command():
 
 # connects insert function to the button
 def insert_command():
-    dealership_backend.insert(
+    database.insert(
         make_value.get().upper(),model_value.get().upper(),year_value.get(),km_value.get(),
         fuel_value.get().upper(),vin_value.get().upper(),color_value.get().upper(),price_value.get()
         )
@@ -75,12 +77,12 @@ def insert_command():
 
 # connects delete function to the button
 def delete_command():
-    dealership_backend.delete(selected_tuple[0]) # -> we get the index number of the selected row tot delete it
+    database.delete(selected_tuple[0]) # -> we get the index number of the selected row tot delete it
 
 # connects the update function to the button
 def update_command():
     #updates the selected widget
-    dealership_backend.update( 
+    database.update( 
         selected_tuple[0],make_value.get().upper(),model_value.get().upper(),year_value.get(),km_value.get(),
         fuel_value.get().upper(),vin_value.get().upper(),color_value.get().upper(),price_value.get()
         ) 
